@@ -151,6 +151,7 @@ public class RegistrationsFragment extends Fragment {
                             }
 
                             volunteerAdapter.notifyDataSetChanged();
+                            debugScrollIssue();
                             tvEmpty.setVisibility(volunteerRegistrationList.isEmpty() ? View.VISIBLE : View.GONE);
                             if (volunteerRegistrationList.isEmpty()) {
                                 tvEmpty.setText("No registrations yet");
@@ -249,7 +250,7 @@ public class RegistrationsFragment extends Fragment {
     }
 
     private void updateRegistrationStatus(int registrationId, String status, int position) {
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE); // Just show progress, don't hide list
 
         ApiHelper.updateRegistrationStatus(getContext(), registrationId, status, new ApiHelper.ApiCallback() {
             @Override
@@ -290,10 +291,29 @@ public class RegistrationsFragment extends Fragment {
         });
     }
 
+    private void debugScrollIssue() {
+        listView.post(() -> {
+            Log.d(TAG, "=== SCROLL DIAGNOSTIC ===");
+            Log.d(TAG, "Adapter count: " + listView.getAdapter().getCount());
+            Log.d(TAG, "ListView height: " + listView.getHeight());
+            Log.d(TAG, "ListView child count: " + listView.getChildCount());
+
+            int totalContentHeight = 0;
+            for (int i = 0; i < listView.getChildCount(); i++) {
+                View child = listView.getChildAt(i);
+                totalContentHeight += child.getHeight();
+                Log.d(TAG, "Item " + i + " height: " + child.getHeight());
+            }
+
+            Log.d(TAG, "Total content height: " + totalContentHeight);
+            Log.d(TAG, "ListView can scroll: " + listView.canScrollVertically(1));
+            Log.d(TAG, "========================");
+        });
+    }
+
     private void showLoading(boolean show) {
         swipeRefresh.setRefreshing(show);
         progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
-        listView.setVisibility(show ? View.GONE : View.VISIBLE);
     }
 
     @Override

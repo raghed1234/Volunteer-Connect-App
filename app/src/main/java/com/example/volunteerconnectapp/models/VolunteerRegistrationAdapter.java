@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.AbsListView;
 
 import com.bumptech.glide.Glide;
 import com.example.volunteerconnectapp.R;
@@ -53,6 +54,13 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_registration, parent, false);
+
+            // FIX: Ensure proper layout params for ListView
+            convertView.setLayoutParams(new AbsListView.LayoutParams(
+                    AbsListView.LayoutParams.MATCH_PARENT,
+                    AbsListView.LayoutParams.WRAP_CONTENT
+            ));
+
             holder = new ViewHolder();
             holder.ivOrgLogo = convertView.findViewById(R.id.ivOrgLogo);
             holder.ivOpportunity = convertView.findViewById(R.id.ivOpportunity);

@@ -5,6 +5,8 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="150dp"
+    android:clipToPadding="false"
     android:background="#F5F5F5"
     app:cardBackgroundColor="@android:color/white"
     android:fillViewport="true">
