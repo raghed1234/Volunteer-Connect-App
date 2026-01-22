@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Volunteer Connect App</string>
+    <string name="app_welcome">Welcome to Link Kind !</string>
+    <string name="app_email">Email</string>
+    <string name="app_password">Password</string>
+    <string name="app_acc">Log in</string>
+    <string name="app_reg"> Do not have an account ? Register</string>
+    <string name="app_create">Create your Account</string>
+    <string name="app_confirm">Confirm Password</string>
+    <string name="app_fullname">Full Name</string>
+    <string name="app_signup">Sign Up</string>
+    <string name="app_back">Already have an account? Login</string>
+    <string name="app_title">Volunteer</string>
+    <string name="app_hint">Search Opportunities …</string>
+    <string-array name="user_types">
+        <item>Volunteer</item>
+        <item>Organization</item>
+        <item>Admin</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
