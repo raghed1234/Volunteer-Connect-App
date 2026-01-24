@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ApiHelper {
-    private static final String BASE_URL = "http://192.168.0.107/volunteer-connect/backend/api/";
+    private static final String BASE_URL = "http://192.168.0.108/volunteer-connect/backend/api/";
     private static final String TAG = "ApiHelper";
 
     public interface ApiCallback {
@@ -405,5 +405,52 @@ public class ApiHelper {
         }).start();
     }
 
+    // ============================================
+    // HELPER METHODS FOR PROFILE IMAGES
+    // ============================================
+
+    /**
+     * Get the full image URL for profile pictures
+     */
+    public static String getProfileImageUrl(String userType, String imageName) {
+        if (imageName == null || imageName.isEmpty()) {
+            return "";
+        }
+
+        String uploadsPath = BASE_URL.replace("/backend/api/", "/uploads/");
+
+        if (userType.equals("volunteer")) {
+            return uploadsPath + "volunteers/" + imageName;
+        } else {
+            return uploadsPath + "logos/" + imageName;
+        }
+    }
+
+    /**
+     * Get the opportunity image URL
+     * Works for both manually added images and uploaded images
+     */
+    public static String getOpportunityImageUrl(String imageName) {
+        if (imageName == null || imageName.isEmpty()) {
+            return "";
+        }
+
+        String uploadsPath = BASE_URL.replace("/backend/api/", "/uploads/");
+        return uploadsPath + "opportunities/" + imageName;
+    }
+
+    /**
+     * Get the upload opportunity endpoint URL
+     */
+    public static String getUploadOpportunityUrl() {
+        return BASE_URL + "upload_opportunity.php";
+    }
+
+    /**
+     * Get base uploads URL (for debugging)
+     */
+    public static String getUploadsBaseUrl() {
+        return BASE_URL.replace("/backend/api/", "/uploads/");
+    }
 
 }

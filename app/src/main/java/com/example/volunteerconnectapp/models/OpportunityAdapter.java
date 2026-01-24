@@ -95,9 +95,9 @@ public class OpportunityAdapter extends RecyclerView.Adapter<OpportunityAdapter.
             }
         });
 
-        // Load organization logo
+        // Load organization logo using ApiHelper
         if (opportunity.getOrganizationLogo() != null && !opportunity.getOrganizationLogo().isEmpty()) {
-            String logoUrl = "http://192.168.0.103/volunteer-connect/uploads/logos/" + opportunity.getOrganizationLogo();
+            String logoUrl = ApiHelper.getProfileImageUrl("organization", opportunity.getOrganizationLogo());
             Log.d(TAG, "Loading organization logo: " + logoUrl);
             Glide.with(context)
                     .load(logoUrl)
@@ -109,14 +109,17 @@ public class OpportunityAdapter extends RecyclerView.Adapter<OpportunityAdapter.
             holder.ivOrgLogo.setImageResource(R.drawable.ic_organization);
         }
 
-        // Load opportunity image
+        // Load opportunity image using ApiHelper - FIXED!
         if (opportunity.getImageUrl() != null && !opportunity.getImageUrl().isEmpty()) {
-            String imageUrl = "http://192.168.0.103/volunteer-connect/uploads/" + opportunity.getImageUrl();
+            String imageUrl = ApiHelper.getOpportunityImageUrl(opportunity.getImageUrl());
+            Log.d(TAG, "Loading opportunity image: " + imageUrl);
+            Log.d(TAG, "Image filename: " + opportunity.getImageUrl());
+
             Glide.with(context)
                     .load(imageUrl)
-                    .skipMemoryCache(true)
                     .placeholder(R.drawable.placeholder_volunteer)
                     .error(R.drawable.placeholder_volunteer)
+                    .centerCrop()
                     .into(holder.ivOpportunity);
         } else {
             holder.ivOpportunity.setImageResource(R.drawable.placeholder_volunteer);

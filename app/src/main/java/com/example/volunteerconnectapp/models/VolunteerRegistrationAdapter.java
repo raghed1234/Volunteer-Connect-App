@@ -13,7 +13,6 @@ import android.widget.AbsListView;
 
 import com.bumptech.glide.Glide;
 import com.example.volunteerconnectapp.R;
-import com.example.volunteerconnectapp.models.Opportunity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,6 +22,7 @@ import java.util.Locale;
 public class VolunteerRegistrationAdapter extends BaseAdapter {
 
     private static final String TAG = "VolunteerRegAdapter";
+
     private Context context;
     private List<Opportunity> registrations;
     private LayoutInflater inflater;
@@ -55,7 +55,7 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_registration, parent, false);
 
-            // FIX: Ensure proper layout params for ListView
+            // Ensure proper ListView layout behavior
             convertView.setLayoutParams(new AbsListView.LayoutParams(
                     AbsListView.LayoutParams.MATCH_PARENT,
                     AbsListView.LayoutParams.WRAP_CONTENT
@@ -68,6 +68,7 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
             holder.tvOrgName = convertView.findViewById(R.id.tvOrgName);
             holder.tvStatus = convertView.findViewById(R.id.tvStatus);
             holder.tvDate = convertView.findViewById(R.id.tvDate);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -75,40 +76,61 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
 
         Opportunity opportunity = registrations.get(position);
 
+        // Title & org name
         holder.tvTitle.setText(opportunity.getTitle());
         holder.tvOrgName.setText(opportunity.getOrganizationName());
 
-        // Format date
-        String dateText = formatDate(opportunity.getStartDate());
-        holder.tvDate.setText(dateText);
+        // Date
+        holder.tvDate.setText(formatDate(opportunity.getStartDate()));
 
-        // Set status with color
+        // Status
         String status = opportunity.getStatus();
         holder.tvStatus.setText(capitalizeFirst(status));
         holder.tvStatus.setBackgroundColor(getStatusColor(status));
 
-        // Load organization logo
-        if (opportunity.getOrganizationLogo() != null && !opportunity.getOrganizationLogo().isEmpty()) {
-            String logoUrl = "http://192.168.0.103/volunteer-connect/uploads/logos/" + opportunity.getOrganizationLogo();
+        // ===============================
+        // Organization logo (FIXED)
+        // ===============================
+        if (opportunity.getOrganizationLogo() != null
+                && !opportunity.getOrganizationLogo().isEmpty()) {
+
+            String logoUrl = ApiHelper.getProfileImageUrl(
+                    "organization",
+                    opportunity.getOrganizationLogo()
+            );
+
             Log.d(TAG, "Loading org logo: " + logoUrl);
+
             Glide.with(context)
                     .load(logoUrl)
                     .placeholder(R.drawable.ic_organization)
                     .error(R.drawable.ic_organization)
                     .circleCrop()
                     .into(holder.ivOrgLogo);
+
         } else {
             holder.ivOrgLogo.setImageResource(R.drawable.ic_organization);
         }
 
-        // Load opportunity image
-        if (opportunity.getImageUrl() != null && !opportunity.getImageUrl().isEmpty()) {
-            String imageUrl = "http://192.168.0.103/volunteer-connect/uploads/" + opportunity.getImageUrl();
+        // ===============================
+        // Opportunity image (FIXED)
+        // ===============================
+        if (opportunity.getImageUrl() != null
+                && !opportunity.getImageUrl().isEmpty()) {
+
+            String imageUrl = ApiHelper.getOpportunityImageUrl(
+                    opportunity.getImageUrl()
+            );
+
+            Log.d(TAG, "Loading opportunity image: " + imageUrl);
+
             Glide.with(context)
                     .load(imageUrl)
                     .placeholder(R.drawable.placeholder_volunteer)
                     .error(R.drawable.placeholder_volunteer)
+                    .centerCrop()
                     .into(holder.ivOpportunity);
+
         } else {
             holder.ivOpportunity.setImageResource(R.drawable.placeholder_volunteer);
         }
@@ -116,12 +138,22 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
         return convertView;
     }
 
+    // ===============================
+    // Helpers
+    // ===============================
+
     private String formatDate(String dateStr) {
         try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-            SimpleDateFormat outputFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
-            Date date = inputFormat.parse(dateStr);
-            return outputFormat.format(date);
+            SimpleDateFormat input = new SimpleDateFormat(
+                    "yyyy-MM-dd HH:mm:ss",
+                    Locale.getDefault()
+            );
+            SimpleDateFormat output = new SimpleDateFormat(
+                    "MMM dd, yyyy",
+                    Locale.getDefault()
+            );
+            Date date = input.parse(dateStr);
+            return output.format(date);
         } catch (Exception e) {
             return dateStr;
         }
@@ -129,7 +161,8 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
 
     private String capitalizeFirst(String text) {
         if (text == null || text.isEmpty()) return text;
-        return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
+        return text.substring(0, 1).toUpperCase()
+                + text.substring(1).toLowerCase();
     }
 
     private int getStatusColor(String status) {

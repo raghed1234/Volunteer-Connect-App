@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- FIX: The 'app' namespace is now correctly declared in the root element -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView"
@@ -73,6 +72,20 @@
 
         </LinearLayout>
 
+        <!-- Add Opportunity Button (Only for Organizations viewing their own profile) -->
+        <Button
+            android:id="@+id/btnAddOpportunity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Add New Opportunity"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#4CAF50"
+            android:visibility="gone"
+            android:drawableStart="@android:drawable/ic_input_add"
+            android:drawablePadding="8dp"
+            android:padding="12dp" />
+
         <!-- Volunteer Section -->
         <LinearLayout
             android:id="@+id/volunteerSection"
@@ -83,7 +96,6 @@
             android:visibility="gone">
 
             <!-- Bio Card -->
-            <!-- FIX: The incorrect 'xmlns:app' declaration has been removed from here -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
