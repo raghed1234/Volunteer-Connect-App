@@ -69,7 +69,7 @@ public class NotificationsFragment extends Fragment {
         adapter = new NotificationAdapter(getContext(), notificationList);
         listViewNotifications.setAdapter(adapter);
 
-        // Mark notification as read when clicked
+
         listViewNotifications.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -24,26 +24,26 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Get the volunteerId from SharedPreferences (saved during login)
+
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         volunteerId = prefs.getInt("user_id", -1);
 
-        // Safety check - if no user_id found, return to login
+
         if (volunteerId == -1) {
             Toast.makeText(this, "Please login first", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
 
-        // Setup Bottom Navigation
+
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
 
-        // Load default fragment (HomeFragment) on first launch
+
         if (savedInstanceState == null) {
             loadFragment(new HomeFragment());
         }
 
-        // Handle navigation item clicks
+
         bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
                 else if (itemId == R.id.nav_profile) {
                     ProfileFragment profileFragment = new ProfileFragment();
 
-                    // Pass the logged-in userId from HomeActivity
+
                     Bundle args = new Bundle();
                     args.putInt("volunteerId", volunteerId); // matches key from MainActivity login
                     profileFragment.setArguments(args);
@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // Set default selected item
+
         bottomNav.setSelectedItemId(R.id.nav_home);
     }
 

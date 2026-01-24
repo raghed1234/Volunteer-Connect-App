@@ -16,7 +16,7 @@
         android:background="@color/white"
         android:padding="32dp">
 
-        <!-- Title -->
+
         <TextView
             android:id="@+id/loginText"
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
             android:textColor="#2E7D32"
             android:layout_marginBottom="24dp" />
 
-        <!-- Name -->
+
         <EditText
             android:id="@+id/fullnameEditText"
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:textColorHint="@color/green_light"
             android:layout_marginBottom="12dp" />
 
-        <!-- Email -->
+
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
             android:textColorHint="@color/green_light"
             android:layout_marginBottom="12dp" />
 
-        <!-- Password -->
+
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
             android:textColorHint="@color/green_light"
             android:layout_marginBottom="12dp" />
 
-        <!-- Confirm Password -->
+
         <EditText
             android:id="@+id/register_main"
             android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                 />
         </RadioGroup>
 
-        <!-- Sign Up button -->
+
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"

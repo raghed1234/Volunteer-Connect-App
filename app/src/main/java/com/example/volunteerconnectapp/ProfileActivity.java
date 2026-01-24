@@ -21,14 +21,14 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
 
-        // Load profile fragment with the user ID
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.profileContainer, ProfileFragment.newInstance(userId))
                     .commit();
         }
 
-        // Back button
+
         ImageButton btnBack = findViewById(R.id.btnBack);
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> finish());

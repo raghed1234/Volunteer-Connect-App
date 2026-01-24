@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:gravity="center_vertical">
 
-    <!-- Notification Icon -->
+
     <ImageView
         android:id="@+id/ivNotificationIcon"
         android:layout_width="40dp"
@@ -16,7 +16,7 @@
         android:tint="#2196F3"
         android:padding="8dp" />
 
-    <!-- Content -->
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_marginStart="12dp"
         android:orientation="vertical">
 
-        <!-- Message -->
+
         <TextView
             android:id="@+id/tvMessage"
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:maxLines="3"
             android:ellipsize="end" />
 
-        <!-- Time -->
+
         <TextView
             android:id="@+id/tvTime"
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
 
     </LinearLayout>
 
-    <!-- Unread Indicator -->
+
     <View
         android:id="@+id/unreadIndicator"
         android:layout_width="10dp"

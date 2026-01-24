@@ -47,7 +47,7 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-    <!-- The fix is here: The opening <TextView> tag is now correctly formed. -->
+
     <TextView
         android:id="@+id/tvEmpty"
         android:layout_width="wrap_content"

@@ -18,7 +18,7 @@
         app:menu="@menu/bottom_nav_menu"
         />
 
-    <!-- Fragment container -->
+
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"

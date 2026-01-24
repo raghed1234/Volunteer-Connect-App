@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        EdgeToEdge.enable(this);  // Make layout edge-to-edge
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         EditText emailEditText = findViewById(R.id.emailEditText);
@@ -39,14 +39,12 @@ public class MainActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(v -> loginUser(emailEditText, passwordEditText));
 
-        // Apply padding for system bars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Register click
 
         TextView registerText = findViewById(R.id.registerText);
         registerText.setOnClickListener(v -> {
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // ✅ Move loginUser OUTSIDE onCreate
+
     private void loginUser(EditText emailEditText, EditText passwordEditText) {
         String url = "http://192.168.0.108/volunteer-connect/backend/api/login.php";
 

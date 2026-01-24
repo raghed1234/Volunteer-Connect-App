@@ -55,7 +55,7 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_registration, parent, false);
 
-            // Ensure proper ListView layout behavior
+
             convertView.setLayoutParams(new AbsListView.LayoutParams(
                     AbsListView.LayoutParams.MATCH_PARENT,
                     AbsListView.LayoutParams.WRAP_CONTENT
@@ -76,21 +76,19 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
 
         Opportunity opportunity = registrations.get(position);
 
-        // Title & org name
+
         holder.tvTitle.setText(opportunity.getTitle());
         holder.tvOrgName.setText(opportunity.getOrganizationName());
 
-        // Date
+
         holder.tvDate.setText(formatDate(opportunity.getStartDate()));
 
-        // Status
+
         String status = opportunity.getStatus();
         holder.tvStatus.setText(capitalizeFirst(status));
         holder.tvStatus.setBackgroundColor(getStatusColor(status));
 
-        // ===============================
-        // Organization logo (FIXED)
-        // ===============================
+
         if (opportunity.getOrganizationLogo() != null
                 && !opportunity.getOrganizationLogo().isEmpty()) {
 
@@ -112,9 +110,7 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
             holder.ivOrgLogo.setImageResource(R.drawable.ic_organization);
         }
 
-        // ===============================
-        // Opportunity image (FIXED)
-        // ===============================
+
         if (opportunity.getImageUrl() != null
                 && !opportunity.getImageUrl().isEmpty()) {
 
@@ -138,9 +134,7 @@ public class VolunteerRegistrationAdapter extends BaseAdapter {
         return convertView;
     }
 
-    // ===============================
-    // Helpers
-    // ===============================
+
 
     private String formatDate(String dateStr) {
         try {

@@ -15,13 +15,13 @@ public class Notification {
         this.createdAt = createdAt;
     }
 
-    // Getters
+
     public int getId() { return id; }
     public int getUserId() { return userId; }
     public String getMessage() { return message; }
     public boolean isRead() { return isRead; }
     public String getCreatedAt() { return createdAt; }
 
-    // Setters
+
     public void setRead(boolean read) { isRead = read; }
 }

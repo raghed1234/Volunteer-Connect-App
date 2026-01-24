@@ -63,14 +63,14 @@ public class NotificationAdapter extends BaseAdapter {
 
         Notification notification = notifications.get(position);
 
-        // Set message
+
         holder.tvMessage.setText(notification.getMessage());
 
-        // Set time
+
         String timeAgo = getTimeAgo(notification.getCreatedAt());
         holder.tvTime.setText(timeAgo);
 
-        // Style based on read status
+
         if (!notification.isRead()) {
             // Unread notification - bold text and show indicator
             holder.tvMessage.setTypeface(null, Typeface.BOLD);

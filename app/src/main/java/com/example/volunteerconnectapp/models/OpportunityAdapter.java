@@ -55,7 +55,7 @@ public class OpportunityAdapter extends RecyclerView.Adapter<OpportunityAdapter.
         holder.tvTitle.setText(opportunity.getTitle());
         holder.tvLocation.setText(opportunity.getLocation());
 
-        // Make organization header clickable
+
         holder.orgHeader.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProfileActivity.class);
             intent.putExtra("user_id", opportunity.getOrgId());
@@ -63,11 +63,11 @@ public class OpportunityAdapter extends RecyclerView.Adapter<OpportunityAdapter.
             context.startActivity(intent);
         });
 
-        // Format date
+
         String dateText = formatDate(opportunity.getStartDate());
         holder.tvDate.setText(dateText);
 
-        // Handle expandable description
+
         String description = opportunity.getDescription();
         holder.isExpanded = false;
 
@@ -80,7 +80,7 @@ public class OpportunityAdapter extends RecyclerView.Adapter<OpportunityAdapter.
             holder.tvReadMore.setVisibility(View.GONE);
         }
 
-        // Read more click handler
+
         holder.tvReadMore.setOnClickListener(v -> {
             if (holder.isExpanded) {
                 // Collapse
@@ -95,7 +95,7 @@ public class OpportunityAdapter extends RecyclerView.Adapter<OpportunityAdapter.
             }
         });
 
-        // Load organization logo using ApiHelper
+
         if (opportunity.getOrganizationLogo() != null && !opportunity.getOrganizationLogo().isEmpty()) {
             String logoUrl = ApiHelper.getProfileImageUrl("organization", opportunity.getOrganizationLogo());
             Log.d(TAG, "Loading organization logo: " + logoUrl);
@@ -109,7 +109,7 @@ public class OpportunityAdapter extends RecyclerView.Adapter<OpportunityAdapter.
             holder.ivOrgLogo.setImageResource(R.drawable.ic_organization);
         }
 
-        // Load opportunity image using ApiHelper - FIXED!
+
         if (opportunity.getImageUrl() != null && !opportunity.getImageUrl().isEmpty()) {
             String imageUrl = ApiHelper.getOpportunityImageUrl(opportunity.getImageUrl());
             Log.d(TAG, "Loading opportunity image: " + imageUrl);

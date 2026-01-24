@@ -77,7 +77,7 @@ public class OrganizationRegistrationAdapter extends BaseAdapter {
         holder.tvVolunteerName.setText(registration.getVolunteerName());
         holder.tvOpportunityTitle.setText(registration.getOpportunityTitle());
 
-        // Email
+
         if (registration.getVolunteerEmail() != null && !registration.getVolunteerEmail().isEmpty()) {
             holder.tvVolunteerEmail.setText("📧 " + registration.getVolunteerEmail());
             holder.tvVolunteerEmail.setVisibility(View.VISIBLE);
@@ -85,7 +85,7 @@ public class OrganizationRegistrationAdapter extends BaseAdapter {
             holder.tvVolunteerEmail.setVisibility(View.GONE);
         }
 
-        // Phone
+
         if (registration.getVolunteerPhone() != null && !registration.getVolunteerPhone().isEmpty()) {
             holder.tvVolunteerPhone.setText("📱 " + registration.getVolunteerPhone());
             holder.tvVolunteerPhone.setVisibility(View.VISIBLE);
@@ -93,7 +93,7 @@ public class OrganizationRegistrationAdapter extends BaseAdapter {
             holder.tvVolunteerPhone.setVisibility(View.GONE);
         }
 
-        // Skills
+
         if (registration.getVolunteerSkills() != null && !registration.getVolunteerSkills().isEmpty()) {
             holder.tvVolunteerSkills.setText("💼 Skills: " + registration.getVolunteerSkills());
             holder.tvVolunteerSkills.setVisibility(View.VISIBLE);
@@ -101,27 +101,27 @@ public class OrganizationRegistrationAdapter extends BaseAdapter {
             holder.tvVolunteerSkills.setVisibility(View.GONE);
         }
 
-        // Location
+
         if (registration.getLocation() != null && !registration.getLocation().isEmpty()) {
             holder.tvLocation.setText("📍 " + registration.getLocation());
         }
 
-        // Start Date
+
         String startDate = formatDate(registration.getStartDate());
         holder.tvStartDate.setText("📅 " + startDate);
 
-        // Registered Date
+
         String registeredDate = formatDate(registration.getRegisteredAt());
         holder.tvRegisteredDate.setText("Registered: " + registeredDate);
 
-        // Accept button
+
         holder.btnAccept.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onAccept(registration, position);
             }
         });
 
-        // Reject button
+
         holder.btnReject.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onReject(registration, position);

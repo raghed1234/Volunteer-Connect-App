@@ -137,7 +137,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // NEW METHOD: Fetch volunteer's own registrations
+
     public static void fetchVolunteerRegistrations(Context context, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -172,7 +172,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // NEW METHOD: Fetch organization's pending registrations
+
     public static void fetchOrganizationRegistrations(Context context, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -207,7 +207,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // NEW METHOD: Update registration status (approve/reject)
+
     public static void updateRegistrationStatus(Context context, int registrationId, String status, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -250,7 +250,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // Fetch notifications for user
+
     public static void fetchNotifications(Context context, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -285,7 +285,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // Mark single notification as read
+
     public static void markNotificationRead(Context context, int notificationId, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -327,7 +327,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // Mark all notifications as read
+
     public static void markAllNotificationsRead(Context context, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -371,7 +371,7 @@ public class ApiHelper {
     }
 
 
-    // Fetch user profile
+
     public static void fetchUserProfile(Context context, int userId, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -405,13 +405,9 @@ public class ApiHelper {
         }).start();
     }
 
-    // ============================================
-    // HELPER METHODS FOR PROFILE IMAGES
-    // ============================================
 
-    /**
-     * Get the full image URL for profile pictures
-     */
+
+
     public static String getProfileImageUrl(String userType, String imageName) {
         if (imageName == null || imageName.isEmpty()) {
             return "";
@@ -426,10 +422,7 @@ public class ApiHelper {
         }
     }
 
-    /**
-     * Get the opportunity image URL
-     * Works for both manually added images and uploaded images
-     */
+
     public static String getOpportunityImageUrl(String imageName) {
         if (imageName == null || imageName.isEmpty()) {
             return "";
@@ -439,16 +432,12 @@ public class ApiHelper {
         return uploadsPath + "opportunities/" + imageName;
     }
 
-    /**
-     * Get the upload opportunity endpoint URL
-     */
+
     public static String getUploadOpportunityUrl() {
         return BASE_URL + "upload_opportunity.php";
     }
 
-    /**
-     * Get base uploads URL (for debugging)
-     */
+
     public static String getUploadsBaseUrl() {
         return BASE_URL.replace("/backend/api/", "/uploads/");
     }

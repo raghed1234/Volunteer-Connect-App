@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Organization Header (Clickable) -->
+
         <LinearLayout
             android:id="@+id/orgHeader"
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
 
         </LinearLayout>
 
-        <!-- Opportunity Image -->
+
         <ImageView
             android:id="@+id/ivOpportunity"
             android:layout_width="match_parent"
@@ -53,7 +53,7 @@
             android:src="@drawable/placeholder_volunteer"
             android:background="#E0E0E0" />
 
-        <!-- Opportunity Details -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
 
             </LinearLayout>
 
-            <!-- Register Button -->
+
             <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"

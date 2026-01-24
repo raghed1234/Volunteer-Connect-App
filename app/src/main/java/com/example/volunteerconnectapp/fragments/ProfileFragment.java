@@ -78,7 +78,7 @@ public class ProfileFragment extends Fragment {
     private String loggedInUserType;
     private UserProfile userProfile;
 
-    // Dialog components
+
     private Dialog addOpportunityDialog;
     private ImageView ivOpportunityImage;
     private TextInputEditText etTitle, etDescription, etLocation, etCapacity, etStartDate, etEndDate;
@@ -243,9 +243,7 @@ public class ProfileFragment extends Fragment {
             volunteerSection.setVisibility(View.GONE);
             organizationSection.setVisibility(View.VISIBLE);
 
-            // CRITICAL: Show button ONLY if:
-            // 1. Logged-in user is an organization
-            // 2. Viewing their OWN profile
+
             boolean isOwnProfile = (userId == loggedInUserId);
             boolean isOrganization = loggedInUserType.equals("organization");
 
@@ -266,7 +264,7 @@ public class ProfileFragment extends Fragment {
             displayOrganizationInfo();
         }
 
-        // Load profile image using ApiHelper
+
         if (userProfile.getLogo() != null && !userProfile.getLogo().isEmpty()) {
             String imageUrl = ApiHelper.getProfileImageUrl(userProfile.getUserType(), userProfile.getLogo());
             Log.d(TAG, "Loading image from: " + imageUrl);

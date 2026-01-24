@@ -6,7 +6,7 @@
     android:background="#F5F5F5"
     tools:context=".fragments.NotificationsFragment">
 
-    <!-- Header with Mark All Read Button -->
+
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
@@ -40,9 +40,7 @@
 
     </LinearLayout>
 
-    <!-- Notifications List -->
 
-    <!-- Loading -->
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
@@ -68,7 +66,7 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-    <!-- Empty State -->
+
     <LinearLayout
         android:id="@+id/emptyLayout"
         android:layout_width="wrap_content"
