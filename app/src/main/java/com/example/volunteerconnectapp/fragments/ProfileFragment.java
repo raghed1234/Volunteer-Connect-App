@@ -153,21 +153,21 @@ public class ProfileFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
         btnAddOpportunity = view.findViewById(R.id.btnAddOpportunity);
 
-        // Volunteer fields
+
         tvBio = view.findViewById(R.id.tvBio);
         tvSkills = view.findViewById(R.id.tvSkills);
         tvAvailability = view.findViewById(R.id.tvAvailability);
         tvPhoneVolunteer = view.findViewById(R.id.tvPhoneVolunteer);
         tvRegistrationCount = view.findViewById(R.id.tvRegistrationCount);
 
-        // Organization fields
+
         tvOrgName = view.findViewById(R.id.tvOrgName);
         tvWebsite = view.findViewById(R.id.tvWebsite);
         tvPhoneOrg = view.findViewById(R.id.tvPhoneOrg);
         tvAddress = view.findViewById(R.id.tvAddress);
         tvOpportunitiesCount = view.findViewById(R.id.tvOpportunitiesCount);
 
-        // Cards for editing
+
         cardBio = view.findViewById(R.id.cardBio);
         cardDetails = view.findViewById(R.id.cardDetails);
         cardOrgDetails = view.findViewById(R.id.cardOrgDetails);
@@ -272,12 +272,12 @@ public class ProfileFragment extends Fragment {
             displayOrganizationInfo();
         }
 
-        // Profile image click to change (only for own profile)
+
         if (isOwnProfile) {
             ivProfileImage.setOnClickListener(v -> openProfileImagePicker());
         }
 
-        // Load profile image
+
         if (userProfile.getLogo() != null && !userProfile.getLogo().isEmpty()) {
             String imageUrl = ApiHelper.getProfileImageUrl(userProfile.getUserType(), userProfile.getLogo());
             Log.d(TAG, "Loading image from: " + imageUrl);
@@ -545,7 +545,7 @@ public class ProfileFragment extends Fragment {
         tvOpportunitiesCount.setText(String.valueOf(userProfile.getOpportunitiesCount()) + " opportunities posted");
     }
 
-    // Add Opportunity methods (existing code)
+
     private void showAddOpportunityDialog() {
         addOpportunityDialog = new Dialog(getContext());
         addOpportunityDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

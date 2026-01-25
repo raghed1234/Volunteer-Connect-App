@@ -18,7 +18,7 @@
             android:textColor="#333333"
             android:layout_marginBottom="16dp" />
 
-        <!-- Image Preview -->
+
         <ImageView
             android:id="@+id/ivOpportunityImage"
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:backgroundTint="#2196F3"
             android:layout_marginBottom="16dp" />
 
-        <!-- Title -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Description -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Location -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Capacity -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Start Date -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- End Date -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Buttons -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

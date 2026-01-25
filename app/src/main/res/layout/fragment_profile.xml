@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Profile Header -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:gravity="center"
             android:elevation="4dp">
 
-            <!-- Profile Image -->
+
             <ImageView
                 android:id="@+id/ivProfileImage"
                 android:layout_width="120dp"
@@ -34,7 +34,7 @@
                 android:scaleType="centerCrop"
                 android:background="@drawable/circle_background" />
 
-            <!-- Name -->
+
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
                 android:textStyle="bold"
                 android:textColor="#333333" />
 
-            <!-- Email -->
+
             <TextView
                 android:id="@+id/tvEmail"
                 android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                 android:textSize="14sp"
                 android:textColor="#666666" />
 
-            <!-- User Type Badge -->
+
             <TextView
                 android:id="@+id/tvUserType"
                 android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
 
         </LinearLayout>
 
-        <!-- Add Opportunity Button (Only for Organizations viewing their own profile) -->
+
         <Button
             android:id="@+id/btnAddOpportunity"
             android:layout_width="match_parent"
@@ -86,7 +86,7 @@
             android:drawablePadding="8dp"
             android:padding="12dp" />
 
-        <!-- Volunteer Section -->
+
         <LinearLayout
             android:id="@+id/volunteerSection"
             android:layout_width="match_parent"
@@ -95,7 +95,7 @@
             android:layout_marginTop="16dp"
             android:visibility="gone">
 
-            <!-- Bio Card -->
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardBio"
                 android:layout_width="match_parent"
@@ -134,7 +134,7 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Details Card -->
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardDetails"
                 android:layout_width="match_parent"
@@ -161,7 +161,7 @@
                         android:textColor="#333333"
                         android:layout_marginBottom="12dp" />
 
-                    <!-- Skills -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
 
                     </LinearLayout>
 
-                    <!-- Availability -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -213,7 +213,7 @@
 
                     </LinearLayout>
 
-                    <!-- Phone -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -239,7 +239,7 @@
 
                     </LinearLayout>
 
-                    <!-- Registration Count -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -270,7 +270,7 @@
 
         </LinearLayout>
 
-        <!-- Organization Section -->
+
         <LinearLayout
             android:id="@+id/organizationSection"
             android:layout_width="match_parent"
@@ -279,7 +279,7 @@
             android:layout_marginTop="16dp"
             android:visibility="gone">
 
-            <!-- Organization Details Card -->
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardOrgDetails"
                 android:layout_width="match_parent"
@@ -306,7 +306,7 @@
                         android:textColor="#333333"
                         android:layout_marginBottom="12dp" />
 
-                    <!-- Organization Name -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -332,7 +332,7 @@
 
                     </LinearLayout>
 
-                    <!-- Website -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -358,7 +358,7 @@
 
                     </LinearLayout>
 
-                    <!-- Phone -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -384,7 +384,7 @@
 
                     </LinearLayout>
 
-                    <!-- Address -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -410,7 +410,7 @@
 
                     </LinearLayout>
 
-                    <!-- Opportunities Count -->
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -441,7 +441,7 @@
 
         </LinearLayout>
 
-        <!-- Loading Indicator -->
+
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
