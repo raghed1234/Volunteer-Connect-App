@@ -50,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        String url = "http://192.168.0.108/volunteer-connect/backend/api/register.php"; // Your PC IP
+        String url = "http://10.102.238.29/volunteer-connect/backend/api/register.php"; // Your PC IP
 
         String fullname = fullnameEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();

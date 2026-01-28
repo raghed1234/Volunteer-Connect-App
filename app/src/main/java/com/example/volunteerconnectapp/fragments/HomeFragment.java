@@ -68,6 +68,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+        adapter.setOnOpportunityDeletedListener(this::loadOpportunities);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
     }
@@ -181,5 +184,11 @@ public class HomeFragment extends Fragment {
         swipeRefresh.setRefreshing(show);
         progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
         recyclerView.setVisibility(show ? View.GONE : View.VISIBLE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadOpportunities();
     }
 }

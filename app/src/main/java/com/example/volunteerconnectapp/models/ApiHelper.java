@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ApiHelper {
-    private static final String BASE_URL = "http://192.168.0.108/volunteer-connect/backend/api/";
+    private static final String BASE_URL = "http://10.102.238.29/volunteer-connect/backend/api/";
     private static final String TAG = "ApiHelper";
 
     public interface ApiCallback {
@@ -172,7 +172,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // NEW METHOD: Fetch organization's pending registrations
+
     public static void fetchOrganizationRegistrations(Context context, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -207,7 +207,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // NEW METHOD: Update registration status (approve/reject)
+
     public static void updateRegistrationStatus(Context context, int registrationId, String status, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -250,7 +250,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // Fetch notifications for user
+
     public static void fetchNotifications(Context context, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -285,7 +285,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // Mark single notification as read
+
     public static void markNotificationRead(Context context, int notificationId, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -327,7 +327,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // Mark all notifications as read
+
     public static void markAllNotificationsRead(Context context, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -371,7 +371,7 @@ public class ApiHelper {
     }
 
 
-    // Fetch user profile
+
     public static void fetchUserProfile(Context context, int userId, ApiCallback callback) {
         new Thread(() -> {
             try {
@@ -405,13 +405,7 @@ public class ApiHelper {
         }).start();
     }
 
-    // ============================================
-    // HELPER METHODS FOR PROFILE IMAGES
-    // ============================================
 
-    /**
-     * Get the full image URL for profile pictures
-     */
     public static String getProfileImageUrl(String userType, String imageName) {
         if (imageName == null || imageName.isEmpty()) {
             return "";
@@ -426,10 +420,7 @@ public class ApiHelper {
         }
     }
 
-    /**
-     * Get the opportunity image URL
-     * Works for both manually added images and uploaded images
-     */
+
     public static String getOpportunityImageUrl(String imageName) {
         if (imageName == null || imageName.isEmpty()) {
             return "";
@@ -439,32 +430,121 @@ public class ApiHelper {
         return uploadsPath + "opportunities/" + imageName;
     }
 
-    /**
-     * Get the upload opportunity endpoint URL
-     */
+
     public static String getUploadOpportunityUrl() {
         return BASE_URL + "upload_opportunity.php";
     }
 
-    /**
-     * Get the update profile endpoint URL
-     */
+
     public static String getUpdateProfileUrl() {
         return BASE_URL + "update_profile.php";
     }
 
-    /**
-     * Get the update profile image endpoint URL
-     */
+
     public static String getUpdateProfileImageUrl() {
         return BASE_URL + "update_profile_image.php";
     }
 
-    /**
-     * Get base uploads URL (for debugging)
-     */
+
+    public static String getDeleteOpportunityUrl() {
+        return BASE_URL + "delete_opportunity.php";
+    }
+
+
+    public static String getUnregisterOpportunityUrl() {
+        return BASE_URL + "unregister_opportunity.php";
+    }
+
+
     public static String getUploadsBaseUrl() {
         return BASE_URL.replace("/backend/api/", "/uploads/");
+    }
+
+
+    public static void deleteOpportunity(Context context, int opportunityId, int orgId, ApiCallback callback) {
+        new Thread(() -> {
+            try {
+                String fullUrl = BASE_URL + "delete_opportunity.php";
+                Log.d(TAG, "Deleting opportunity at: " + fullUrl);
+
+                URL url = new URL(fullUrl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoOutput(true);
+                conn.setRequestProperty("Content-Type", "application/json");
+
+                JSONObject json = new JSONObject();
+                json.put("opportunity_id", opportunityId);
+                json.put("org_id", orgId);
+
+                OutputStream os = conn.getOutputStream();
+                os.write(json.toString().getBytes());
+                os.flush();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    reader.close();
+                    callback.onSuccess(response.toString());
+                } else {
+                    callback.onError("Delete failed with code: " + responseCode);
+                }
+                conn.disconnect();
+            } catch (Exception e) {
+                Log.e(TAG, "Error deleting opportunity", e);
+                callback.onError(e.getMessage());
+            }
+        }).start();
+    }
+
+
+    public static void unregisterFromOpportunity(Context context, int opportunityId, ApiCallback callback) {
+        new Thread(() -> {
+            try {
+                int userId = getUserId(context);
+                String fullUrl = BASE_URL + "unregister_opportunity.php";
+                Log.d(TAG, "Unregistering from opportunity at: " + fullUrl);
+
+                URL url = new URL(fullUrl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoOutput(true);
+                conn.setRequestProperty("Content-Type", "application/json");
+
+                JSONObject json = new JSONObject();
+                json.put("volunteer_id", userId);
+                json.put("opportunity_id", opportunityId);
+
+                OutputStream os = conn.getOutputStream();
+                os.write(json.toString().getBytes());
+                os.flush();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    reader.close();
+                    callback.onSuccess(response.toString());
+                } else {
+                    callback.onError("Unregister failed with code: " + responseCode);
+                }
+                conn.disconnect();
+            } catch (Exception e) {
+                Log.e(TAG, "Error unregistering from opportunity", e);
+                callback.onError(e.getMessage());
+            }
+        }).start();
     }
 
 }

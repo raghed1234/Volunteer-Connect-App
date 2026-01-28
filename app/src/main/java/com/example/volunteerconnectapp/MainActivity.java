@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void loginUser(EditText emailEditText, EditText passwordEditText) {
-        String url = "http://192.168.0.108/volunteer-connect/backend/api/login.php";
+        String url = "http://10.102.238.29/volunteer-connect/backend/api/login.php";
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
