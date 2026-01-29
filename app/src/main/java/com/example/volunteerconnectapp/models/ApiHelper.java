@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ApiHelper {
-    private static final String BASE_URL = "http://10.102.238.29/volunteer-connect/backend/api/";
+    private static final String BASE_URL = "http://10.214.13.29/volunteer-connect/backend/api/";
     private static final String TAG = "ApiHelper";
 
     public interface ApiCallback {
